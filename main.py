@@ -17,6 +17,8 @@ def job4today():
                                start_date=current_date + ' 14:40:05', end_date=current_date + ' 16:40:05')
     print('crawler for today starts --- {}'.format(current_date))
     scheduler_in_a_day.start()
+    print('crawler for today done --- {}'.format(current_date))
+
 
 
 scheduler_manage_days = BlockingScheduler()
