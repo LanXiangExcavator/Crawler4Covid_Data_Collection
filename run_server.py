@@ -7,7 +7,7 @@ import os
 def job2run_server():
     t = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
     print('try to run / restart web server on port 8050 --- {}'.format(t))
-    os.system('docker run -it -p 8050:8050 --rm scrapinghub/splash')
+    os.system('docker run -it -p 0.0.0.0:8050:8050 --rm scrapinghub/splash')
 
 def job4today():
     print('Start job2run_server')

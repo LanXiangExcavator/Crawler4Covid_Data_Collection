@@ -15,7 +15,10 @@ def job2run_server():
 
 def job4today():
     print('start job2crawl')
-    scheduler_in_a_day = BlockingScheduler()
+    job_defaults = {
+        'max_instances': 5
+    }
+    scheduler_in_a_day = BlockingScheduler(job_defaults=job_defaults)
     current_date = time.strftime('%Y-%m-%d', time.localtime(time.time()))
     scheduler_in_a_day.add_job(job2crawl, 'interval', minutes=1, args=[],
                                start_date=current_date + ' 11:30:05', end_date=current_date + ' 12:30:05')
