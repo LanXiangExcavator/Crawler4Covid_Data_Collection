@@ -1,13 +1,24 @@
 # Crawler4Covid_Data_Collection
 
-### Install scrapy and scrapy-splash
+### requirements
+Install scrapy and scrapy-splash
 ```pip install Scrapy```
 
 ```pip install scrapy-splash```
 
-### Make sure Docker version >= 17 is installed. Run the contrainer, start the service to listen
+```pip install apscheduler```
+
+```pip install apscheduler```
+
+Make sure Docker version >= 17 is installed. Run the contrainer, start the service to listen
+
 ```sudo docker pull scrapinghub/splash```
 
-```sudo docker run -it -p 8050:8050 --rm scrapinghub/splash```
+### Config
+    Add your email info in ./configs/mail.json
 
-### Run main.py
+### Run 
+
+```sudo python run_server.py```
+
+```python run_crawler.py```

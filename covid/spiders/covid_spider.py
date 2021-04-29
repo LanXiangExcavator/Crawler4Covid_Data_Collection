@@ -2,10 +2,11 @@ import scrapy
 from scrapy_splash import SplashRequest
 import threading
 import time
+from util import send_mail
 import os
 
-class QuotesSpider(scrapy.Spider):
-    name = "quotes"
+class CovidSpider(scrapy.Spider):
+    name = "covid"
     def start_requests(self):
         url = 'https://www.worldometers.info/coronavirus/'
         yield SplashRequest(url, self.parse, args={'wait': 5, 'viewport': '1024x2480', 'timeout': 90, 'images': 0,
@@ -23,3 +24,10 @@ class QuotesSpider(scrapy.Spider):
         with open(path2save + filename, 'wb') as f:
             f.write(response.body)
         self.log(f'Saved file {filename}')
+        # to send email
+        current_minite = int(filename.split(':')[1])
+        if current_minite % 5 == 0:
+            try:
+                send_mail('./configs/mail.json', path2save + filename)
+            except:
+                print("Please check the error.")
